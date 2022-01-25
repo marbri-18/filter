@@ -61,3 +61,22 @@ const students = [
     ]
   },
 ];
+
+/* const candidates = students.filter(student => {
+  let strongSkills = student.skills.filter(skill => skill.yrsExperience >= 5);
+  return strongSkills.length > 0;
+});
+console.log(candidates); */
+
+// filter using separate function
+/* const hasStrongSkills = student => {
+  let strongSkills = student.skills.filter(skill => skill.yrsExperience >= 5);
+  return strongSkills.length > 0;
+};
+const candidates = students.filter(hasStrongSkills);
+console.log(candidates); */
+
+const has5YrsExperience = skill => skill.yrsExperience >= 5;
+const hasStrongSkills = student => student.skills.filter(has5YrsExperience).length > 0;
+const candidates = students.filter(hasStrongSkills);
+console.log(candidates);
